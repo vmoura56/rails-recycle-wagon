@@ -1,6 +1,6 @@
 <%= simple_form_for @offer do |f| %>
   <%= f.input :volume %>
-  <%= f.input :category %>
+  <%= f.input :category, collection: ["Glass", "Paper", "Plastic"] %>
   <%= f.input :general_location %>
   <%= f.input :exact_location %>
   <%= f.input :pick_up_on %>

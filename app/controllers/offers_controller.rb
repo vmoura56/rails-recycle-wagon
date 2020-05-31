@@ -1,6 +1,8 @@
 class OffersController < ApplicationController
   def index
     @offers = Offer.all
+
+    filter_offers if params[:search]
   end
 
   def show
@@ -47,11 +49,20 @@ class OffersController < ApplicationController
       redirect_to offers
     end
   end
+
+  def search
+    @offers = Offer.where()
+  end
   
   private
   
   def offer_params
     params.require(:offer).permit(:volume, :general_location, :exact_location, :pick_up_on, :user, :category)
   end
-  
+
+  def filter_offers
+    search = params[:search]
+    @offers = Offer.where('general_location ILIKE ?', "%#{search[:general_location]}%") unless search[:general_location].empty?
+    @offers = Offer.where(category: search[:category]) unless search[:category] == "Any"
+  end
 end
