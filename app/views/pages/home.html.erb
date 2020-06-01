@@ -6,18 +6,18 @@
 </div>
 </div>
 
-<div class = "devise-link">
-<%= simple_form_for :search, url: root_path, method: "GET", html: {
-class: 'form-inline' }  do |f| %>
-  <%= f.input :category, collection: ["Any", "Glass", "Paper", "Plastic"] %>
-  <%= f.input :general_location, input_html: {value: ""} %>
-  <%= f.submit "Search", class: "btn-flat p-1" %>
 
+<%= form_tag offers_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search for offers"
+  %>
+  <%= submit_tag "Search", class: "btn btn-success" %>
 <% end %>
-</div>
 
 <div class="cards">
-  <% @offers.each do |offer| %>
+  <% @offers_near.each do |offer| %>
     <div class="card-product">
       <%  if offer.category.name == "Plastic" %>
         <% url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
@@ -33,18 +33,18 @@ class: 'form-inline' }  do |f| %>
       <h1><%= link_to offer.volume , offer_path(offer) %></h1>
       <h2><%= offer.general_location %></h2>
       <p><%= offer.user.username %></p>
+      <p><%= (offer.distance.round(2).to_s + "km away") if offer.distance >= 1 %></p>
+      <p><%= ((offer.distance.round(3) * 1000).to_s + "meters away") if offer.distance < 1 %></p>
       </div>
     </div>
   <% end %>
 </div>
 
-<%= form_tag offers_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search for offers"
-  %>
-  <%= submit_tag "Search", class: "btn btn-success" %>
-<% end %>
+<div id="map"
+  style="width: 100%; height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
 
 
