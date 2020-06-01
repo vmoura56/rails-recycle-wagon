@@ -11,7 +11,9 @@ class OffersController < ApplicationController
     @user_location = Geocoder.search(client_ip).first.coordinates
   
     @offers_near = Offer.joins(:category).geocoded.near(@user_location, 100)
-
+    
+    filter_offers if params[:query].present?
+    
     @markers = @offers_near.map do |offer|
       {
         lat: offer.latitude,
@@ -19,7 +21,6 @@ class OffersController < ApplicationController
       }
     end
 
-    filter_offers if params[:query].present?
   end
 
   def show
