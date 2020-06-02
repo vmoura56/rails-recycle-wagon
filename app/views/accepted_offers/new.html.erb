@@ -1,0 +1,5 @@
+<%= simple_form_for [@offer, @accepted_offer] do |f| %>
+  <%= f.hidden_field :user_id, value: @offer.user_id %>
+  <%= f.hidden_field :offer_id, value: @offer.id %>
+  <%= f.submit 'Accept offer and commit to pick up', class: "btn btn-dark"%>
+<% end %>
