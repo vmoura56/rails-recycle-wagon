@@ -45,10 +45,10 @@ Offer.create!(volume: "10 glass bottles", general_location: "Copacabana", exact_
 Offer.create!(volume: "5 plastic bottles", general_location: "Copacabana", exact_location: "Avenida Prado Junior 335, Rio de Janeiro",
  pick_up_on: "7 June 2020", category: paper, user: matt)
 
-Offer.create!(volume: "5 glass jards", general_location: "Copacabana", exact_location: "Avenida Prado Junior 335, Rio de Janeiro",
+Offer.create!(volume: "5 glass botafogo cups", general_location: "Copacabana", exact_location: "Avenida Prado Junior 335, Rio de Janeiro",
  pick_up_on: "7 June 2020", category: paper, user: matt)
 
- Offer.create!(volume: "2 cardboard boxes", general_location: "Copacabana", exact_location: "Avenida Prado Junior 335, Rio de Janeiro",
+ Offer.create!(volume: "2 mastodon posters", general_location: "Copacabana", exact_location: "Avenida Prado Junior 335, Rio de Janeiro",
  pick_up_on: "7 June 2020", category: paper, user: matt)
 
 Offer.create!(volume: "50 cardboard boxes", general_location: "Ipanema", exact_location: "Rua Visconde de Piraja 206, Rio de Janeiro",
