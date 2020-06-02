@@ -1,6 +1,6 @@
 <h1>Offers</h1>
 
 <ul><% @offers.each do |offer|%></ul>
-  <li><%= offer.category %></li>
+  <li><%= offer.category.name %></li>
   <li><%= link_to "see details", offer_path(offer) %></li>
 <% end %>
