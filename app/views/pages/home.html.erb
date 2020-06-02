@@ -1,6 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Recyclables Ready for Pick Up!</h1>
 
 <% @offers.each do |offer| %>
-  <%= offer.category.name %>
+  <%= "#{offer.volume}, #{offer.general_location}" %>
 <% end %>
+
