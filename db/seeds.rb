@@ -9,3 +9,4 @@
 Category.create(name:"Plastic")
 Category.create(name:"Glass")
 Category.create(name:"Paper")
+
