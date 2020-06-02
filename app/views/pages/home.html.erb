@@ -1,5 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
  <% @offers.each do |offer| %>
   <h2><%= link_to "#{offer.category} #{offer.general_location} #{offer.pick_up_on}", offer_path(offer) %></h2>
 <%= end %>
