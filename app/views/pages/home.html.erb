@@ -1,6 +1,7 @@
 <h1>Recyclables Ready for Pick Up!</h1>
 
 <% @offers.each do |offer| %>
+<h2><%= link_to "#{offer.volume}, #{offer.general_location}", offer_path(offer) %></h2>
   <%= "#{offer.volume}, #{offer.general_location}" %>
 <% end %>
 
