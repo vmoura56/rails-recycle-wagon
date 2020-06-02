@@ -1,0 +1,2 @@
+class RecycleCategory < ApplicationRecord
+end
