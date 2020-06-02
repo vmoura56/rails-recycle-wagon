@@ -1,20 +1,23 @@
 class OffersController < ApplicationController
   def index
-    @offers = Offer.all
+    @offers = policy_scope(Offer)
 
     filter_offers if params[:search]
   end
 
   def show
     @offer = Offer.find(params[:id])
+    authorize @offer
   end
 
   def new
     @offer = Offer.new
+    authorize @offer
   end
 
   def create
     @offer = Offer.new(offer_params)
+    authorize @offer
     if @offer.save
       flash[:success] = "Offer successfully created"
       redirect_to @offer
@@ -26,10 +29,12 @@ class OffersController < ApplicationController
 
   def edit
     @offer = Offer.find(params[:id])
+    authorize @offer
   end
   
   def update
     @offer = Offer.find(params[:id])
+    authorize @offer
       if @offer.update_attributes(offer_params)
         flash[:success] = "Offer was successfully updated"
         redirect_to @offer
@@ -41,6 +46,7 @@ class OffersController < ApplicationController
 
   def destroy
     @offer = Offer.find(params[:id])
+    authorize @offer
     if @offer.destroy
       flash[:success] = 'Offer was successfully deleted.'
       redirect_to offers
@@ -48,10 +54,6 @@ class OffersController < ApplicationController
       flash[:error] = 'Something went wrong'
       redirect_to offers
     end
-  end
-
-  def search
-    @offers = Offer.where()
   end
   
   private
