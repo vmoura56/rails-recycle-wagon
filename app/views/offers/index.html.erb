@@ -1,16 +1,11 @@
 <div class="heading">
 <h1>Your filtered recyclables</h1>
-</div>
+<div class="search-home">
 <%= form_tag offers_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Search for recyclables"
-  %>
-  <%= text_field_tag :location,
-    params[:location],
-    class: "form-control",
-    placeholder: "Location"
   %>
   <%= submit_tag "Search", class: "btn-flat" %>
 <% end %>
