@@ -34,15 +34,14 @@ class OffersController < ApplicationController
 
   def update
     @offer = Offer.find(params[:id])
-
     authorize @offer
-      if @offer.update_attributes(offer_params)
-        flash[:success] = "Offer was successfully updated"
-        redirect_to @offer
-      else
-        flash[:error] = "Something went wrong"
-        render 'edit'
-      end
+    if @offer.update(offer_params)
+      flash[:success] = "Offer was successfully updated"
+      redirect_to @offer
+    else
+      flash[:error] = "Something went wrong"
+      render 'edit'
+    end
   end
 
   def destroy
@@ -68,5 +67,4 @@ class OffersController < ApplicationController
     @offers = Offer.where('general_location ILIKE ?', "%#{search[:general_location]}%") unless search[:general_location].empty?
     @offers = Offer.where(category: search[:category]) unless search[:category] == "Any"
   end
-
 end
