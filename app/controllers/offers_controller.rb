@@ -34,6 +34,7 @@ class OffersController < ApplicationController
 
   def update
     @offer = Offer.find(params[:id])
+<<<<<<< HEAD
     if @offer.update_attributes(offer_params)
       flash[:success] = "Offer was successfully updated"
       redirect_to @offer
@@ -41,6 +42,8 @@ class OffersController < ApplicationController
       flash[:error] = "Something went wrong"
       render 'edit'
     end
+=======
+>>>>>>> a57af0ff90b5ff41da6b21b493c95917440c0935
 
     authorize @offer
       if @offer.update_attributes(offer_params)
@@ -75,4 +78,8 @@ class OffersController < ApplicationController
     @offers = Offer.where('general_location ILIKE ?', "%#{search[:general_location]}%") unless search[:general_location].empty?
     @offers = Offer.where(category: search[:category]) unless search[:category] == "Any"
   end
+<<<<<<< HEAD
+=======
+
+>>>>>>> a57af0ff90b5ff41da6b21b493c95917440c0935
 end
