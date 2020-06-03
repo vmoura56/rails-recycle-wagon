@@ -2,6 +2,19 @@ class OffersController < ApplicationController
   def index
     @offers = policy_scope(Offer)
 
+    client_ip = request.remote_ip
+
+    @user_location = Geocoder.search(client_ip).first.coordinates
+
+    @offers_near = Offer.geocoded.near(@user_location, 10)
+
+    @markers = @offers_near.map do |offer| 
+      {
+      lat: offer.latitude,
+      lng: offer.longitude
+      }
+    end
+
     filter_offers if params[:search]
   end
 
@@ -65,7 +78,9 @@ class OffersController < ApplicationController
 
   def filter_offers
     search = params[:search]
-    @offers = Offer.where('general_location ILIKE ?', "%#{search[:general_location]}%") unless search[:general_location].empty?
+    # old search by location name filter, removed it after adding geocoding
+    # @offers = Offer.where('general_location ILIKE ?', "%#{search[:general_location]}%") unless search[:general_location].empty?
+
     @offers = Offer.where(category: search[:category]) unless search[:category] == "Any"
   end
 end
