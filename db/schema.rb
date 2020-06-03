@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 2020_06_02_152534) do
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
+  create_table "recycle_categories", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

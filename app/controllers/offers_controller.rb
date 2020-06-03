@@ -8,7 +8,7 @@ class OffersController < ApplicationController
 
     @offers_near = Offer.geocoded.near(@user_location, 10)
 
-    @markers = @offers_near.map do |offer| 
+    @markers = @offers.map do |offer|
       {
       lat: offer.latitude,
       lng: offer.longitude
