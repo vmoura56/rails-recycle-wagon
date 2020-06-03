@@ -26,24 +26,14 @@
   <%#= url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
 <%#= end %>
 
-<<<<<<< HEAD
-<h1>Offers</h1>
-
 <%= simple_form_for :search, url: root_path, method: "GET", html: {
-=======
-<%= simple_form_for :search, url: root_path, method: "GET", html: { 
->>>>>>> a57af0ff90b5ff41da6b21b493c95917440c0935
 class: 'form-inline' }  do |f| %>
   <%= f.input :category, collection: ["Any", "Glass", "Paper", "Plastic"] %>
   <%= f.input :general_location, input_html: {value: ""} %>
   <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
-<<<<<<< HEAD
 
 <ul><% @offers.each do |offer|%></ul>
   <li><%= offer.category.name %></li>
   <li><%= link_to "see details", offer_path(offer) %></li>
 <% end %>
-
-=======
->>>>>>> a57af0ff90b5ff41da6b21b493c95917440c0935
