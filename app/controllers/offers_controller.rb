@@ -31,9 +31,10 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
     authorize @offer
   end
-  
+
   def update
     @offer = Offer.find(params[:id])
+
     authorize @offer
       if @offer.update_attributes(offer_params)
         flash[:success] = "Offer was successfully updated"
@@ -55,9 +56,9 @@ class OffersController < ApplicationController
       redirect_to offers
     end
   end
-  
+
   private
-  
+
   def offer_params
     params.require(:offer).permit(:volume, :general_location, :exact_location, :pick_up_on, :user, :category)
   end
@@ -67,4 +68,5 @@ class OffersController < ApplicationController
     @offers = Offer.where('general_location ILIKE ?', "%#{search[:general_location]}%") unless search[:general_location].empty?
     @offers = Offer.where(category: search[:category]) unless search[:category] == "Any"
   end
+
 end
