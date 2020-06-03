@@ -8,7 +8,7 @@
       <h1><%=@offer.user.username%></h1>
       <h2><%= @offer.volume %></h2>
       <h2><%= @offer.general_location %></h2>
-      <%= link_to "I'll take it!", new_offer_accepted_offer_path(@offer) %>
+      <%= link_to "I'll take it!", offer_accepted_offers_path(@offer), method: 'POST' %>
       <%= link_to "Cancel pick up!", accepted_offer_path(@offer), method: 'DELETE', data: { confirm: "Are you sure?" } %>
       </div>
     </div>
@@ -27,4 +27,3 @@
     <%= link_to 'Destroy', @offer, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 </td>
-

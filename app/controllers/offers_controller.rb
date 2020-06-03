@@ -30,6 +30,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
+    @offer.user = current_user
     authorize @offer
     if @offer.save
       flash[:success] = "Offer successfully created"
@@ -72,7 +73,7 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:volume, :general_location, :exact_location, :pick_up_on, :user, :category)
+    params.require(:offer).permit(:volume, :general_location, :exact_location, :pick_up_on, :category_id)
   end
 
   def filter_offers
