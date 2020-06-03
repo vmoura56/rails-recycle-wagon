@@ -1,4 +1,18 @@
-<h2><%=@offer.user.username%></h2>
 
-<p><%= @offer.volume %></p>
-<p><%= @offer.general_location %></p>
+<div class="heading">
+<h1>Commit to Pick Up!</h1>
+</div>
+<div class="cards">
+    <div class="card-show">
+      <div class="card-show-infos">
+      <h1><%=@offer.user.username%></h1>
+      <h2><%= @offer.volume %></h2>
+      <h2><%= @offer.general_location %></h2>
+      <%= link_to "I'll take it!", new_offer_accepted_offer_path(@offer) %>
+      <%= link_to "Cancel pick up!", accepted_offer_path(@offer), method: 'DELETE', data: { confirm: "Are you sure?" } %>
+      </div>
+    </div>
+</div>
+<div class="back-button">
+<%= link_to 'Back', root_path %>
+</div>

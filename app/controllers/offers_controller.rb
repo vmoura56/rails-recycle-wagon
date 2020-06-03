@@ -25,16 +25,16 @@ class OffersController < ApplicationController
   def edit
     @offer = Offer.find(params[:id])
   end
-  
+
   def update
     @offer = Offer.find(params[:id])
-      if @offer.update_attributes(offer_params)
-        flash[:success] = "Offer was successfully updated"
-        redirect_to @offer
-      else
-        flash[:error] = "Something went wrong"
-        render 'edit'
-      end
+    if @offer.update_attributes(offer_params)
+      flash[:success] = "Offer was successfully updated"
+      redirect_to @offer
+    else
+      flash[:error] = "Something went wrong"
+      render 'edit'
+    end
   end
 
   def destroy
@@ -47,11 +47,10 @@ class OffersController < ApplicationController
       redirect_to offers
     end
   end
-  
+
   private
-  
+
   def offer_params
     params.require(:offer).permit(:volume, :general_location, :exact_location, :pick_up_on, :user, :category)
   end
-  
 end

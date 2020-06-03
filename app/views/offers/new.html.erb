@@ -1,8 +1,18 @@
+<div class="heading">
+<h1>Create a new pick up</h1>
+</div>
+
+<div class="cards">
 <%= simple_form_for @offer do |f| %>
   <%= f.input :volume %>
-  <%= f.input :category %>
+  <%= f.association :category, collection: Category.order('name ASC') %>
   <%= f.input :general_location %>
   <%= f.input :exact_location %>
   <%= f.input :pick_up_on %>
   <%= f.button :submit %>
 <% end %>
+</div>
+
+<div class="back-button">
+<%= link_to 'Back', root_path %>
+</div>
