@@ -25,3 +25,10 @@
 <%#= else %>
   <%#= url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
 <%#= end %>
+
+<%= simple_form_for :search, url: root_path, method: "GET", html: { 
+class: 'form-inline' }  do |f| %>
+  <%= f.input :category, collection: ["Any", "Glass", "Paper", "Plastic"] %>
+  <%= f.input :general_location, input_html: {value: ""} %>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
