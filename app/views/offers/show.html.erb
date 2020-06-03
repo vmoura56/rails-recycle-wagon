@@ -16,3 +16,18 @@
 <div class="back-button">
 <%= link_to 'Back', root_path %>
 </div>
+=======
+<p><%= @offer.volume %></p>
+<p><%= @offer.general_location %></p>
+
+<td>
+  <% if policy(@offer).update? %>
+    <%= link_to 'Edit', edit_offer_path(@offer) %>
+  <% end %>
+</td>
+<td>
+  <% if policy(@offer).destroy? %>
+    <%= link_to 'Destroy', @offer, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</td>
+
