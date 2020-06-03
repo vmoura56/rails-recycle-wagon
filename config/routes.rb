@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get :search
       get :dashboard
     end
-    resources :accepted_offers, only: [:new, :create]
+    resources :accepted_offers, only: :create
   end
   resources :accepted_offers, only: :destroy
 end

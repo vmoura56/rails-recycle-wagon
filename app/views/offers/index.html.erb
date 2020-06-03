@@ -25,15 +25,18 @@
 <%#= else %>
   <%#= url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
 <%#= end %>
-
+<div class = "devise-link">
 <%= simple_form_for :search, url: root_path, method: "GET", html: {
 class: 'form-inline' }  do |f| %>
   <%= f.input :category, collection: ["Any", "Glass", "Paper", "Plastic"] %>
   <%= f.input :general_location, input_html: {value: ""} %>
-  <%= f.submit "Search", class: "btn btn-primary" %>
+  <%= f.submit "Search", class: "btn btn-success" %>
 <% end %>
+</div>
 
+<div class = "devise-link">
 <ul><% @offers.each do |offer|%></ul>
   <li><%= offer.category.name %></li>
   <li><%= link_to "see details", offer_path(offer) %></li>
 <% end %>
+</div>
