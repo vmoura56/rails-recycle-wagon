@@ -6,15 +6,14 @@
 </div>
 </div>
 
-<div class = "devise-link">
-<%= simple_form_for :search, url: root_path, method: "GET", html: {
-class: 'form-inline' }  do |f| %>
-  <%= f.input :category, collection: ["Any", "Glass", "Paper", "Plastic"] %>
-  <%= f.input :general_location, input_html: {value: ""} %>
-  <%= f.submit "Search", class: "btn-flat p-1" %>
-
+<%= form_tag offers_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search for offers"
+  %>
+  <%= submit_tag "Search", class: "btn btn-success" %>
 <% end %>
-</div>
 
 <div class="cards">
   <% @offers.each do |offer| %>
@@ -38,13 +37,5 @@ class: 'form-inline' }  do |f| %>
   <% end %>
 </div>
 
-<%= form_tag offers_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search for offers"
-  %>
-  <%= submit_tag "Search", class: "btn btn-success" %>
-<% end %>
 
 

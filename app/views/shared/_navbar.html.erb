@@ -1,10 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <span>
-  <%= link_to "#", class: "navbar-brand" do %>
-  <%= image_tag "recycle-wagon-logo.png" %>
-  <% end %>
-  <h3 class="wagon">recycle wagon</h3>
-  </span>
+  <div class="d-flex">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "recycle-wagon-logo.png" %>
+    <% end %>
+    <div class="wagon">
+      <h3>recycle</h3>
+      <h3>wagon</h3>
+    </div>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
