@@ -1,7 +1,12 @@
 body {
-
+  color: #2d3963;
+  background-color: #f2f4f9;
 }
 
 .heading {
   margin: 32px;
+}
+
+.in-line-header {
+  display: flex;
 }

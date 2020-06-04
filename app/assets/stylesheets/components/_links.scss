@@ -10,16 +10,44 @@ a:hover {
 .back-button {
   margin: 40px;
   width: 160px;
-  color: #4A4A4A;
-  border: 1px solid #4A4A4A;
+  color: green;
+  border: 1px solid green;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
-  opacity: 0.6;
   transition: opacity 0.3s ease;
   text-align: center;
 }
 
+.back-button:hover {
+  opacity: 1;
+}
+
 .devise-link {
   margin: 32px;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #6fc956;
+  transition: background 0.3s ease;
+  text-align: center;
+}
+
+.btn-flat:hover {
+  background: #5BA647;
+  color: white;
+}
+
+a.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #6fc956;
+  transition: background 0.3s ease;
+  text-align: center;
+  font-size: 24px;
+  display: inline-block;
 }

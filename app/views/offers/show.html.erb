@@ -5,25 +5,28 @@
 <div class="cards">
     <div class="card-show">
       <div class="card-show-infos">
-      <h1><%=@offer.user.username%></h1>
-      <h2><%= @offer.volume %></h2>
-      <h2><%= @offer.general_location %></h2>
-      <%= link_to "I'll take it!", offer_accepted_offers_path(@offer), method: 'POST' %>
-      <%= link_to "Cancel pick up!", accepted_offer_path(@offer), method: 'DELETE', data: { confirm: "Are you sure?" } %>
+        <h1><%= @offer.volume %></h1>
+        <h2><%= @offer.general_location %></h2>
+        <h2><%=@offer.user.username%></h2>
+        <div>
+        <%= link_to "I'll take it!", offer_accepted_offers_path(@offer), class:"btn-flat mt-3", method: 'POST' %>
+        <%= link_to "Cancel pick up", accepted_offer_path(@offer), method: 'DELETE', data: { confirm: "Are you sure?" } %>
+        </div>
+        <td>
+          <% if policy(@offer).update? %>
+            <%= link_to 'Edit', edit_offer_path(@offer), class:"ml-1" %>
+          <% end %>
+        </td>
+        <td>
+          <% if policy(@offer).destroy? %>
+            <%= link_to 'Destroy', @offer, class:"ml-5", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </div>
     </div>
 </div>
+
 <div class="back-button">
 <%= link_to 'Back', root_path %>
 </div>
 
-<td>
-  <% if policy(@offer).update? %>
-    <%= link_to 'Edit', edit_offer_path(@offer) %>
-  <% end %>
-</td>
-<td>
-  <% if policy(@offer).destroy? %>
-    <%= link_to 'Destroy', @offer, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-</td>

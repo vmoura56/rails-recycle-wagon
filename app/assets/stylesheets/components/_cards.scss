@@ -21,14 +21,19 @@
   object-fit: cover;
 }
 
+.card-product h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
 .card-product h2 {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-product p {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -40,29 +45,35 @@
   max-width: 100%;
 }
 
+.card-show h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
 .card-show h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
-  color: #63775e;
 }
 
 .card-show p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
-  color: #63775e;
 }
 
 .card-show .card-show-infos {
   padding: 16px;
-  color: #63775e;
 }
 
 .card-show {
+  overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  color: #63775e;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
 }
 
 // Smallest device
