@@ -1,3 +1,24 @@
 <div class="heading">
 <h1>Your filtered recyclables</h1>
 
+<div class="cards">
+  <% @offers.each do |offer| %>
+    <div class="card-product">
+      <%  if offer.category.name == "Plastic" %>
+        <% url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
+      <%elsif offer.category.name == "Glass" %>
+        <% url = "lacey-williams-Jwh_k0K_QOM-unsplash.jpg" %>
+      <%elsif offer.category.name == "Paper" %>
+        <%  url = "alfonso-navarro-qph7tJfcDys-unsplash.jpg" %>
+      <% else %>
+        <% url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
+      <% end %>
+      <%= image_tag url %>
+      <div class="card-product-infos">
+      <h1><%= link_to offer.volume , offer_path(offer) %></h1>
+      <h2><%= offer.general_location %></h2>
+      <p><%= offer.user.username %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

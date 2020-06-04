@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   def index
-    @offers = policy_scope(Offer)
+    @offers = policy_scope(Offer).where.not(id: AcceptedOffer.select(:offer_id).uniq)
 
     client_ip = request.remote_ip
     # If testing from local host, ip will set to a known London ip

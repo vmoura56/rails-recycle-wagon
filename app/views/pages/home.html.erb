@@ -5,19 +5,30 @@
 <%= link_to 'Sign up', new_user_registration_path, class:"btn-flat ml-3" %>
 </div>
 </div>
+
+<div class = "devise-link">
+<%= simple_form_for :search, url: root_path, method: "GET", html: {
+class: 'form-inline' }  do |f| %>
+  <%= f.input :category, collection: ["Any", "Glass", "Paper", "Plastic"] %>
+  <%= f.input :general_location, input_html: {value: ""} %>
+  <%= f.submit "Search", class: "btn-flat p-1" %>
+
+<% end %>
+</div>
+
 <div class="cards">
   <% @offers.each do |offer| %>
     <div class="card-product">
-      <%#=  if offer.category.name == "plastic" %>
-        <%#= url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
-      <%#=elsif offer.category.name == "glass" %>
-        <%#= url = "lacey-williams-Jwh_k0K_QOM-unsplash.jpg" %>
-      <%#=elsif offer.category.name == "paper" %>
-        <%#=  url = "alfonso-navarro-qph7tJfcDys-unsplash.jpg" %>
-      <%#= else %>
-        <%#= url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
-      <%#= end %>
-      <%= image_tag "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
+      <%  if offer.category.name == "Plastic" %>
+        <% url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
+      <%elsif offer.category.name == "Glass" %>
+        <% url = "lacey-williams-Jwh_k0K_QOM-unsplash.jpg" %>
+      <%elsif offer.category.name == "Paper" %>
+        <%  url = "alfonso-navarro-qph7tJfcDys-unsplash.jpg" %>
+      <% else %>
+        <% url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
+      <% end %>
+      <%= image_tag url %>
       <div class="card-product-infos">
       <h1><%= link_to offer.volume , offer_path(offer) %></h1>
       <h2><%= offer.general_location %></h2>
@@ -36,12 +47,4 @@
   <%= submit_tag "Search", class: "btn btn-success" %>
 <% end %>
 
-<div class = "devise-link">
-<%= simple_form_for :search, url: root_path, method: "GET", html: {
-class: 'form-inline' }  do |f| %>
-  <%= f.input :category, collection: ["Any", "Glass", "Paper", "Plastic"] %>
-  <%= f.input :general_location, input_html: {value: ""} %>
-  <%= f.submit "Search", class: "btn btn-success" %>
 
-<% end %>
-</div>
