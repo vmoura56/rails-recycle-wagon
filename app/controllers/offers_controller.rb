@@ -3,12 +3,16 @@ class OffersController < ApplicationController
     @offers = policy_scope(Offer)
 
     client_ip = request.remote_ip
+    # If testing from local host, ip will set to a known London ip
+    if client_ip == "::1"
+      client_ip = "5.62.43.181"
+    end
 
     @user_location = Geocoder.search(client_ip).first.coordinates
 
     @offers_near = Offer.geocoded.near(@user_location, 10)
 
-    @markers = @offers.map do |offer|
+    @markers = @offers_near.map do |offer|
       {
       lat: offer.latitude,
       lng: offer.longitude
@@ -21,6 +25,10 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     authorize @offer
+    @marker = {
+      lat: @offer.latitude,
+      lng: @offer.longitude
+    }
     @new_accepted_offer = AcceptedOffer.new(offer: @offer, user: current_user)
     @accepted_offer = AcceptedOffer.find_by(offer_id: @offer.id, user_id: current_user.id)
   end
