@@ -21,6 +21,8 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     authorize @offer
+    @new_accepted_offer = AcceptedOffer.new(offer: @offer, user: current_user)
+    @accepted_offer = AcceptedOffer.find_by(offer_id: @offer.id, user_id: current_user.id)
   end
 
   def new
