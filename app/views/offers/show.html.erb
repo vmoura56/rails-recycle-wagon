@@ -9,8 +9,12 @@
         <h2><%= @offer.general_location %></h2>
         <h2><%=@offer.user.username%></h2>
         <div>
-        <%= link_to "I'll take it!", offer_accepted_offers_path(@offer), class:"btn-flat mt-3", method: 'POST' %>
-        <%= link_to "Cancel pick up", accepted_offer_path(@offer), method: 'DELETE', data: { confirm: "Are you sure?" } %>
+          <% if !@accepted_offer && policy(@new_accepted_offer).create? %>
+            <%= link_to "I'll take it!", offer_accepted_offers_path(@offer), class:"btn-flat mt-3", method: 'POST' %>
+          <% end %>
+          <% if @accepted_offer && policy(@accepted_offer).destroy? %>
+            <%= link_to "Cancel pick up", accepted_offer_path(@offer), method: 'DELETE', data: { confirm: "Are you sure?" } %>
+          <% end %>
         </div>
         <td>
           <% if policy(@offer).update? %>

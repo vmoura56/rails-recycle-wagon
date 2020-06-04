@@ -8,16 +8,16 @@
 <div class="cards">
   <% @offers.each do |offer| %>
     <div class="card-product">
-      <%=  if offer.category.name == "plastic" %>
-        <%= url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
-      <%=elsif offer.category.name == "glass" %>
-        <%= url = "lacey-williams-Jwh_k0K_QOM-unsplash.jpg" %>
-      <%=elsif offer.category.name == "paper" %>
-        <%=  url = "alfonso-navarro-qph7tJfcDys-unsplash.jpg" %>
-      <%= else %>
-        <%= url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
-      <%= end %>
-      <%= image_tag "#{url}" %>
+      <%#=  if offer.category.name == "plastic" %>
+        <%#= url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
+      <%#=elsif offer.category.name == "glass" %>
+        <%#= url = "lacey-williams-Jwh_k0K_QOM-unsplash.jpg" %>
+      <%#=elsif offer.category.name == "paper" %>
+        <%#=  url = "alfonso-navarro-qph7tJfcDys-unsplash.jpg" %>
+      <%#= else %>
+        <%#= url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
+      <%#= end %>
+      <%= image_tag "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
       <div class="card-product-infos">
       <h1><%= link_to offer.volume , offer_path(offer) %></h1>
       <h2><%= offer.general_location %></h2>
