@@ -6,7 +6,6 @@
 </div>
 </div>
 
-
 <%= form_tag offers_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
@@ -45,6 +44,7 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+
 
 
 
