@@ -1,5 +1,9 @@
 <div class="heading">
-<h1>Recyclables Ready for Pick Up!</h1>
+<h2>Ready for Pick Up!</h2>
+<div class="in-line-header">
+<h1>Sign up to instantly claim these recyclables</h1>
+<%= link_to 'Sign up', new_user_registration_path, class:"btn-flat ml-3" %>
+</div>
 </div>
 <div class="cards">
   <% @offers.each do |offer| %>
@@ -8,7 +12,7 @@
       <div class="card-product-infos">
       <h1><%= link_to offer.volume , offer_path(offer) %></h1>
       <h2><%= offer.general_location %></h2>
-      <h2><%= offer.user.username %></h2>
+      <p><%= offer.user.username %></p>
       </div>
     </div>
   <% end %>
