@@ -14,8 +14,8 @@ class OffersController < ApplicationController
 
     @markers = @offers_near.map do |offer|
       {
-      lat: offer.latitude,
-      lng: offer.longitude
+        lat: offer.latitude,
+        lng: offer.longitude
       }
     end
 
@@ -25,10 +25,10 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     authorize @offer
-    @marker = {
+    @markers = [{
       lat: @offer.latitude,
       lng: @offer.longitude
-    }
+    }]
     @new_accepted_offer = AcceptedOffer.new(offer: @offer, user: current_user)
     @accepted_offer = AcceptedOffer.find_by(offer_id: @offer.id, user_id: current_user.id)
   end
