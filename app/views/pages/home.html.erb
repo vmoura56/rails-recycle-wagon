@@ -16,7 +16,7 @@
 <% end %>
 
 <div class="cards">
-  <% @offers.each do |offer| %>
+  <% @offers_near.each do |offer| %>
     <div class="card-product">
       <%  if offer.category.name == "Plastic" %>
         <% url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
@@ -32,10 +32,19 @@
       <h1><%= link_to offer.volume , offer_path(offer) %></h1>
       <h2><%= offer.general_location %></h2>
       <p><%= offer.user.username %></p>
+      <p><%= (offer.distance.round(2).to_s + "km away") if offer.distance >= 1 %></p>
+      <p><%= ((offer.distance.round(3) * 1000).to_s + "meters away") if offer.distance < 1 %></p>
       </div>
     </div>
   <% end %>
 </div>
+
+<div id="map"
+  style="width: 100%; height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
 
 
 
