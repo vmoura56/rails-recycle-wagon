@@ -1,42 +1,5 @@
 <div class="heading">
 <h1>Your filtered recyclables</h1>
-</div>
-<div class="cards">
-  <% @offers.each do |offer| %>
-    <div class="card-product">
-      <%= image_tag "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
-      <div class="card-product-infos">
-      <h1><%= link_to offer.volume, offer_path(offer) %></h1>
-      <h2><%= offer.general_location %></h2>
-      <h2><%= offer.user.username %></h2>
-      </div>
-    </div>
-  <% end %>
-</div>
-<div class="back-button">
-<%= link_to 'Home', root_path %>
-</div>
-<%#=  if offer.category.name == "plastic" %>
-  <%#= url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
-<%#=elsif offer.category.name == "glass" %>
-  <%#= url = "lacey-williams-Jwh_k0K_QOM-unsplash.jpg" %>
- <%#=elsif offer.category.name == "paper" %>
-<%#=  url = "alfonso-navarro-qph7tJfcDys-unsplash.jpg" %>
-<%#= else %>
-  <%#= url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
-<%#= end %>
-<div class = "devise-link">
-<%= simple_form_for :search, url: root_path, method: "GET", html: {
-class: 'form-inline' }  do |f| %>
-  <%= f.input :category, collection: ["Any", "Glass", "Paper", "Plastic"] %>
-  <%= f.input :general_location, input_html: {value: ""} %>
-  <%= f.submit "Search", class: "btn btn-success" %>
 
-<% end %>
-</div>
 
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-     </div>
+
