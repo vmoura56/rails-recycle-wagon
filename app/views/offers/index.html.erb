@@ -1,16 +1,6 @@
 <div class="heading">
 <h1>Your filtered recyclables</h1>
 
-<div class = "devise-link">
-<%= simple_form_for :search, url: root_path, method: "GET", html: {
-class: 'form-inline' }  do |f| %>
-  <%= f.input :category, collection: ["Any", "Glass", "Paper", "Plastic"] %>
-  <%= f.input :general_location, input_html: {value: ""} %>
-  <%= f.submit "Search", class: "btn-flat p-1" %>
-<% end %>
-</div>
-</div>
-
 <div class="cards">
   <% @offers.each do |offer| %>
     <div class="card-product">
@@ -32,4 +22,3 @@ class: 'form-inline' }  do |f| %>
     </div>
   <% end %>
 </div>
-

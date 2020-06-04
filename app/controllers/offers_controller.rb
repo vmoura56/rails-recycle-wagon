@@ -9,8 +9,8 @@ class OffersController < ApplicationController
     end
 
     @user_location = Geocoder.search(client_ip).first.coordinates
-
-    @offers_near = Offer.geocoded.near(@user_location, 10)
+  
+    @offers_near = Offer.joins(:category).geocoded.near(@user_location, 100)
 
     @markers = @offers_near.map do |offer|
       {
@@ -19,7 +19,7 @@ class OffersController < ApplicationController
       }
     end
 
-    filter_offers if params[:search]
+    filter_offers if params[:query].present?
   end
 
   def show
@@ -87,10 +87,22 @@ class OffersController < ApplicationController
   end
 
   def filter_offers
-    search = params[:search]
     # old search by location name filter, removed it after adding geocoding
     # @offers = Offer.where('general_location ILIKE ?', "%#{search[:general_location]}%") unless search[:general_location].empty?
+    query_array = params[:query].split(" ")
 
-    @offers = Offer.where(category: search[:category]) unless search[:category] == "Any"
+    
+
+    query_array.each do |query_word|
+      sql_query = " \
+        volume ILIKE :query OR \
+        categories.name ILIKE :query OR \
+        general_location ILIKE :query OR \
+        pick_up_on ILIKE :query
+      "
+      if @offers_near.where(sql_query, query: "%#{query_word}%").any?
+        @offers_near = @offers_near.where(sql_query, query: "%#{query_word}%")
+      end
+    end
   end
 end

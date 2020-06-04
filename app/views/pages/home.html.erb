@@ -38,5 +38,13 @@ class: 'form-inline' }  do |f| %>
   <% end %>
 </div>
 
+<%= form_tag offers_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search for offers"
+  %>
+  <%= submit_tag "Search", class: "btn btn-success" %>
+<% end %>
 
 
