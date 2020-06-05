@@ -10,7 +10,7 @@ class OffersController < ApplicationController
 
     @user_location = Geocoder.search(client_ip).first.coordinates
 
-    location_search if params[:query].present?
+    # location_search if params[:query].present?
 
 
     @offers_near = Offer.where.not(id: AcceptedOffer.select(:offer_id).uniq).joins(:category).geocoded.near(@user_location, 100)
