@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   def index
-    @offers = policy_scope(Offer).where.not(id: AcceptedOffer.select(:offer_id).uniq).joins(:category).geocoded
+    @offers = policy_scope(Offer).where.not(id: AcceptedOffer.select(:offer_id).uniq)
 
     client_ip = request.remote_ip
     # If testing from local host, ip will set to a known London ip
@@ -12,7 +12,9 @@ class OffersController < ApplicationController
 
     location_search if params[:query].present?
 
+
     @offers_near = Offer.where.not(id: AcceptedOffer.select(:offer_id).uniq).joins(:category).geocoded.near(@user_location, 100)
+
 
     filter_offers if params[:query].present?
 
