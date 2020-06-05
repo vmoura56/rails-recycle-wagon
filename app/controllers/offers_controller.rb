@@ -9,18 +9,17 @@ class OffersController < ApplicationController
     end
 
     @user_location = Geocoder.search(client_ip).first.coordinates
-  
+
     @offers_near = Offer.joins(:category).geocoded.near(@user_location, 100)
-    
+
     filter_offers if params[:query].present?
-    
+
     @markers = @offers_near.map do |offer|
       {
         lat: offer.latitude,
         lng: offer.longitude
       }
     end
-
   end
 
   def show
@@ -74,10 +73,10 @@ class OffersController < ApplicationController
     authorize @offer
     if @offer.destroy
       flash[:success] = 'Offer was successfully deleted.'
-      redirect_to offers
+      redirect_to offers_path
     else
       flash[:error] = 'Something went wrong'
-      redirect_to offers
+      redirect_to offers_path
     end
   end
 
@@ -92,7 +91,7 @@ class OffersController < ApplicationController
     # @offers = Offer.where('general_location ILIKE ?', "%#{search[:general_location]}%") unless search[:general_location].empty?
     query_array = params[:query].split(" ")
 
-    
+
 
     query_array.each do |query_word|
       sql_query = " \

@@ -1,8 +1,18 @@
+<div class="heading">
+<h1>Edit your offer</h1>
+</div>
+
+<div class="cards">
 <%= simple_form_for @offer do |f| %>
   <%= f.input :volume %>
   <%= f.association :category, collection: Category.order('name ASC') %>
   <%= f.input :general_location %>
   <%= f.input :exact_location %>
   <%= f.input :pick_up_on %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class:"btn-flat" %>
 <% end %>
+</div>
+
+<div class="back-button m-26px">
+<%= link_to 'Back', :back %>
+</div>
