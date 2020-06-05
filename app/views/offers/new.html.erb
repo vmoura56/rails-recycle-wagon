@@ -1,5 +1,5 @@
 <div class="heading">
-<h1>Create a new pick up</h1>
+<h1>Create a new offer</h1>
 </div>
 
 <div class="cards">
@@ -9,10 +9,10 @@
   <%= f.input :general_location %>
   <%= f.input :exact_location %>
   <%= f.input :pick_up_on %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class:"btn-flat" %>
 <% end %>
 </div>
 
-<div class="back-button">
-<%= link_to 'Back', root_path %>
+<div class="back-button m-26px">
+<%= link_to 'Back', :back %>
 </div>

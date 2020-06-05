@@ -1,13 +1,33 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   margin: 32px;
 }
 
+// .cards-planet {
+//   display: flex
+//   justify-content: center;
+// }
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 128px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -22,15 +42,20 @@
 }
 
 .card-product h1 {
-  font-size: 36px;
+  font-size: 24px;
+  font-weight: bold;
   margin: 0;
 }
 
 .card-product h2 {
   font-size: 24px;
-  font-weight: bold;
   margin: 0;
-  color: #6610f2;
+  color: #f94183;
+}
+
+.card-product h3 {
+  font-size: 24px;
+  margin: 0;
 }
 
 .card-product p {
@@ -50,12 +75,14 @@
   font-size: 24px;
   font-weight: bold;
   margin: 0;
+  color: green;
 }
 
 .card-show h2 {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 24px;
   margin: 0;
+  margin-top: 2px;
+  color: #2d3963
 }
 
 .card-show p {
@@ -75,6 +102,16 @@
   display: flex;
   align-items: center;
   border-radius: 5px;
+}
+
+#card-show-cards {
+  grid-template-columns: 1fr;
+  width: 400px;
+  float: left;
+}
+
+#card-show-cards .back-button {
+  margin: 9px;
 }
 
 // Smallest device
