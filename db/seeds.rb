@@ -11,6 +11,7 @@ puts "clearing up the mess leftover from the last idiot to use this"
 Category.destroy_all
 Offer.destroy_all
 User.destroy_all
+AcceptedOffer.destroy_all
 puts %{
 	    ______________________________    . \\  | / .
 	   /                            / \\     \\ \\ / /
@@ -72,7 +73,7 @@ Offer.create!(volume: "200 flashcards", general_location: "Arpoador", exact_loca
  pick_up_on: "19 June 2020", category: paper, user: milene)
 
  Offer.create!(volume: "8 wine bottles", general_location: "Arpoador", exact_location: "R. Francisco Otaviano, 67 Rio de Janeiro",
- pick_up_on: "19 June 2020", category: glass, user: milene) 
+ pick_up_on: "19 June 2020", category: glass, user: milene)
 
 Offer.create!(volume: "55 bottles of gin", general_location: "Copacabana", exact_location: "Rua Domingo Ferreira 6, Rio de Janeiro",
  pick_up_on: "20 June 2020", category: glass, user: diogo)
