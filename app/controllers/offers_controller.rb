@@ -10,9 +10,8 @@ class OffersController < ApplicationController
 
     @user_location = Geocoder.search(client_ip).first.coordinates
 
-
     location_search if params[:query].present?
-  
+
     @offers_near = Offer.where.not(id: AcceptedOffer.select(:offer_id).uniq).joins(:category).geocoded.near(@user_location, 100)
 
     filter_offers if params[:query].present?
@@ -83,10 +82,16 @@ class OffersController < ApplicationController
     end
   end
 
+  def dashboard
+    @offer = Offer.find(params[:id])
+    @offers = Offer.where(user_id: current_user.id)
+    @accepted_offers = AcceptedOffer.where(user_id: current_user.id)
+  end
+
   private
 
   def offer_params
-    params.require(:offer).permit(:volume, :general_location, :exact_location, :pick_up_on, :category_id)
+    params.require(:offer).permit(:volume, :general_location, :exact_location, :pick_up_on, :category_id, :user_id)
   end
 
   def filter_offers
@@ -105,7 +110,7 @@ class OffersController < ApplicationController
       end
     end
   end
-  
+
   def location_search
     if Geocoder.search(params[:query]).first.coordinates.any?
       @user_location = Geocoder.search(params[:query]).first.coordinates
