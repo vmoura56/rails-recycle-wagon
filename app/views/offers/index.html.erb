@@ -1,13 +1,13 @@
 <div class="heading">
 <h1>Your filtered recyclables</h1>
-
+</div>
 <%= form_tag offers_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
-    placeholder: "Search for offers"
+    placeholder: "Search for recyclables"
   %>
-  <%= submit_tag "Search", class: "btn btn-success" %>
+  <%= submit_tag "Search", class: "btn-flat" %>
 <% end %>
 
 <div class="cards">
@@ -26,16 +26,13 @@
       <div class="card-product-infos">
       <h1><%= link_to offer.volume , offer_path(offer) %></h1>
       <h2><%= offer.general_location %></h2>
-      <p><%= offer.user.username %></p>
+      <h3>Pick up on: <%=offer.pick_up_on %></h3>
       <p><%= (offer.distance.round(2).to_s + "km away") if offer.distance >= 1 %></p>
       <p><%= ((offer.distance.round(3) * 1000).to_s + "meters away") if offer.distance < 1 %></p>
       </div>
     </div>
   <% end %>
 </div>
-
-<div id="map"
-  style="width: 100%; height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="back-button">
+  <%= link_to 'Back', :back %>
 </div>

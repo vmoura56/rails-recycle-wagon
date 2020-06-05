@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     end
 
     @user_location = Geocoder.search(client_ip).first.coordinates
-  
+
     @offers_near = Offer.joins(:category).geocoded.near(@user_location, 100)
 
     @markers = @offers_near.map do |offer|
