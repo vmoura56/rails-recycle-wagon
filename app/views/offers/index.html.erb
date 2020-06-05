@@ -7,6 +7,11 @@
     class: "form-control",
     placeholder: "Search for recyclables"
   %>
+  <%= text_field_tag :location,
+    params[:location],
+    class: "form-control",
+    placeholder: "Location"
+  %>
   <%= submit_tag "Search", class: "btn-flat" %>
 <% end %>
 
@@ -27,8 +32,8 @@
       <h1><%= link_to offer.volume , offer_path(offer) %></h1>
       <h2><%= offer.general_location %></h2>
       <h3>Pick up on: <%=offer.pick_up_on %></h3>
-      <p><%= (offer.distance.round(2).to_s + "km away") if offer.distance >= 1 %></p>
-      <p><%= ((offer.distance.round(3) * 1000).to_s + "meters away") if offer.distance < 1 %></p>
+      <p><%= (offer.distance.round(2).to_s + " km away") if offer.distance >= 1 %></p>
+      <p><%= ((offer.distance * 1000).round.to_s + " meters away") if offer.distance < 1 %></p>
       </div>
     </div>
   <% end %>
