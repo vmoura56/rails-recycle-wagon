@@ -1,0 +1,76 @@
+
+<div class="heading">
+  <h2>Welcome to your dashboard</h2>
+  <div class="in-line-header">
+    <div class="avatar large">
+      <% if current_user.username == "LuckySevans7" %>
+        <%= image_tag "https://ca.slack-edge.com/T02NE0241-U011XTJSQUE-f36f6944853c-512", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% elsif current_user.username == "VinnyRecycler" %>
+        <%= image_tag "https://ca.slack-edge.com/T02NE0241-U012AQNQBE0-b4129dd1ac76-512", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% elsif current_user.username == "GabrielGreen" %>
+        <%= image_tag "https://ca.slack-edge.com/T02NE0241-U012H8QE7JM-484d2a1920db-512", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+        <%= image_tag "https://ca.slack-edge.com/T02NE0241-U0124RW7F1R-ef37f689d26e-512", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
+    </div>
+  </div>
+    <div class="in-line-header">
+      <h1>Click here to offer your recyclables for collection</h1>
+      <%= link_to "Create Offer", new_offer_path, class:"btn-offer-create ml-3" %>
+    </div>
+  <h2>Earth is ours for the saving!</h2>
+</div>
+
+<h2>Your offers</h2>
+  <div class="cards">
+        <% @offers.each do |offer| %>
+          <div class="card-product">
+            <%  if offer.category.name == "Plastic" %>
+              <% url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
+            <%elsif offer.category.name == "Glass" %>
+              <% url = "lacey-williams-Jwh_k0K_QOM-unsplash.jpg" %>
+            <%elsif offer.category.name == "Paper" %>
+              <%  url = "michael-jin-ET6_fDwZj2U-unsplash.jpg" %>
+            <% else %>
+              <% url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
+            <% end %>
+            <%= image_tag url %>
+            <div class="card-product-infos">
+            <h1><%= link_to offer.volume , offer_path(offer) %></h1>
+            <h2><%= offer.general_location %></h2>
+            <h2><%= @offer.exact_location %></h2>
+            <h3>Pick up on: <%=offer.pick_up_on %></h3>
+            </div>
+          <% end %>
+        </div>
+  </div>
+
+  <h2>Your scheduled pick ups</h2>
+    <div class="cards">
+      <% @accepted_offers.each do |offer| %>
+        <div class="card-product">
+          <%  if offer.category.name == "Plastic" %>
+            <% url = "jonathan-chng-OTDyDgPoJ_0-unsplash.jpg" %>
+          <%elsif offer.category.name == "Glass" %>
+            <% url = "lacey-williams-Jwh_k0K_QOM-unsplash.jpg" %>
+          <%elsif offer.category.name == "Paper" %>
+            <%  url = "michael-jin-ET6_fDwZj2U-unsplash.jpg" %>
+          <% else %>
+            <% url = "erol-ahmed-wKTF65TcReY-unsplash.jpg" %>
+          <% end %>
+          <%= image_tag url %>
+          <div class="card-product-infos">
+            <h1><%= link_to offer.volume , offer_path(offer) %></h1>
+            <h2>Pick up on: <%=offer.pick_up_on %></h2>
+            <h2><%= offer.exact_location %></h2>
+            <p><%= @offer.user.username %></p>
+          </div>
+        </div>
+      <% end %>
+  </div>
+
+
+<div class="back-button">
+  <%= link_to 'Back', :back %>
+</div>
+
