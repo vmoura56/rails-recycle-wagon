@@ -98,7 +98,6 @@ class OffersController < ApplicationController
       sql_query = " \
         volume ILIKE :query OR \
         categories.name ILIKE :query OR \
-        general_location ILIKE :query OR \
         pick_up_on ILIKE :query
       "
       if @offers_near.where(sql_query, query: "%#{query_word}%").any?
