@@ -8,10 +8,10 @@ a:hover {
 }
 
 .back-button {
-  margin: 40px;
+  margin: 28px;
   width: 160px;
   color: green;
-  border: 1px solid green;
+  border: 1px solid #f94183;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
@@ -36,6 +36,21 @@ a:hover {
   text-align: center;
 }
 
+.btn-offer-create {
+  color: white;
+  padding: 10px 8px;
+  border-radius: 4px;
+  background: #6fc956;
+  transition: background 0.3s ease;
+  text-align: center;
+  font-size: 23px;
+}
+
+.btn-offer-create:hover {
+  background: #5BA647;
+  color: white;
+}
+
 .btn-flat:hover {
   background: #5BA647;
   color: white;
@@ -45,9 +60,19 @@ a.btn-flat {
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #6fc956;
+  background: #f94183;
   transition: background 0.3s ease;
   text-align: center;
   font-size: 24px;
   display: inline-block;
+}
+
+input#query {
+  float: left;
+  margin-right: 16px;
+  margin-top: 3px;
+  margin-left: 32px;
+  width: 59%;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
